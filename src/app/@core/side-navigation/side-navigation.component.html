@@ -1,0 +1,21 @@
+<mat-toolbar color="accent">
+  <mat-icon>
+store
+</mat-icon>
+</mat-toolbar>
+<div class="list-pages">
+
+  <mat-selection-list [multiple]="false">
+
+    <mat-list-option *ngFor="let page of pages" [value]="page.value">
+      {{page.label}}
+      <mat-icon>
+        {{page.icon}}
+      </mat-icon>
+    </mat-list-option>
+
+
+  </mat-selection-list>
+
+
+</div>

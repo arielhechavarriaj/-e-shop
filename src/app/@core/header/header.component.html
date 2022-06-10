@@ -1,0 +1,13 @@
+
+<mat-toolbar class="header-navigation">
+<span>   <button mat-icon-button (click)="onToggle()"><mat-icon> menu</mat-icon></button>
+      <button mat-raised-button routerLink="/" routerLinkActive="active"><mat-icon>home</mat-icon>      Tienda Virtual</button>
+</span>
+  <span >
+   <button style="margin-right: 5px" mat-raised-button routerLink="/auth/login/" ><mat-icon> <span class="material-symbols-outlined">
+login
+</span></mat-icon>  </button>   <button mat-raised-button (click)="navigateToUrl(url_github_code)" ><mat-icon svgIcon="github" aria-hidden="false" aria-label="code on Github"></mat-icon>  </button>
+
+</span>
+
+</mat-toolbar>
