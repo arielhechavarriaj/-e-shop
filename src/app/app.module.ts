@@ -11,6 +11,8 @@ import { HomeComponent } from './@core/home/home.component';
 import { HeaderComponent } from './@core/header/header.component';
 import { SideNavigationComponent } from './@core/side-navigation/side-navigation.component';
 import { PageNotFoundComponent } from './@core/page-not-found/page-not-found.component';
+import {environment} from "../environments/environment";
+import {AkitaNgDevtools} from "@datorama/akita-ngdevtools";
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { PageNotFoundComponent } from './@core/page-not-found/page-not-found.com
     ReactiveFormsModule,
     FormsModule,
     AuthModule,
-    MaterialModule
+    MaterialModule,
+    environment.production ? [] : AkitaNgDevtools.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

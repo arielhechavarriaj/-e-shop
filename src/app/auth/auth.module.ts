@@ -1,29 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import {AuthService} from "./auth.service";
 import {AuthGuard} from "./auth.guard";
 import {RouterModule, Routes} from "@angular/router";
-import { AuthComponent } from './auth/auth.component';
+import { AuthComponent } from './container/auth.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MaterialModule} from "../material.modules";
+import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [
   {
     path: 'auth',
     component: AuthComponent,
     children: [
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'logout', component: LogoutComponent }
     ]
   }
 ];
 
 @NgModule({
   declarations: [
-    RegisterComponent,
     LoginComponent,
-    AuthComponent
+    AuthComponent,
+    LogoutComponent
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -32,6 +32,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     MaterialModule
   ],
-  providers: [AuthService, AuthGuard]
+  providers: [ AuthGuard]
 })
 export class AuthModule { }

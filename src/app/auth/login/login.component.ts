@@ -1,27 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators,  FormControl } from '@angular/forms';
-import {AuthService} from "../auth.service";
-
-
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from '@angular/forms';
+import {LoginService} from "../../+state/login.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
-
+export class LoginComponent implements OnInit,OnDestroy {
   loginForm!: FormGroup;
   errors: any = [];
   notify: string | undefined;
-  error=false;
-  messageError='';
+  error = false;
+  messageError = '';
+  subs!: Subscription;
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
 
-  constructor(private auth: AuthService, private router: Router, private fb: FormBuilder, private route: ActivatedRoute) { }
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
+
+    this.subs=this.loginService.userName$.subscribe(value=>{
+      if(value!=''){
+        this.router.navigate(['/']);
+      }
+    })
+
     this.route.queryParams.subscribe((params) => {
       const key1 = 'registered';
       const key2 = 'loggedOut';
@@ -37,30 +53,15 @@ export class LoginComponent implements OnInit {
   initForm(): void {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 
-  isValidInput(fieldName: string | number): boolean {
-
-   if( this.loginForm)
-
-     return this.loginForm.controls[fieldName].invalid &&
-      (this.loginForm.controls[fieldName].dirty || this.loginForm.controls[fieldName].touched);
-   else return false;
-  }
-
   login(): void {
-
-    this.auth.login(this.loginForm.value).subscribe((value: boolean) => {
-      if (value) {
-        this.router.navigate(['/']);
-      } else {
-   this.error=true;
-   this.messageError='Upss password or username incorrect.'
-      }
-    }
-  );
+    this.loginService.updateUserlogin(this.loginForm.value);
   }
 
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
 }

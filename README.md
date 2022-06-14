@@ -1,6 +1,6 @@
 # ExamenAppAriel
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+Tienda online construida con Angular material, datorama akita y Angular Cli
+Los datos han sido proveidos por [dummyJson](https://dummyjson.com/)
 
 ## Development server
 
