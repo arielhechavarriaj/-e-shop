@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Pages} from "../../models/interfaces";
+import {Pages} from "../../shared/interfaces";
 
 @Component({
   selector: 'app-side-navigation',

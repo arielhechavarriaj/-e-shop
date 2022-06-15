@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoginStore } from './login.store';
-import { User } from '../models/interfaces';
+import { User } from '../shared/interfaces';
 import { LoginQuery } from './login.query';
 import {Observable} from "rxjs";
 

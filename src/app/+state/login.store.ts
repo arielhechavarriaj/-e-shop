@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
-import {User} from "../models/interfaces";
+import {User} from "../shared/interfaces";
 
 export interface LoginState {
   username: string ;

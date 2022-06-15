@@ -6,7 +6,7 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
-import {LoginService} from "../../+state/login.service";
+import {LoginService} from "../../../+state/login.service";
 import {Subscription} from "rxjs";
 
 @Component({

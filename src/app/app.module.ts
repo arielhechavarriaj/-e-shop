@@ -7,20 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AuthModule} from "./auth/auth.module";
 import {MaterialModule} from "./material.modules";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { HomeComponent } from './@core/home/home.component';
-import { HeaderComponent } from './@core/header/header.component';
-import { SideNavigationComponent } from './@core/side-navigation/side-navigation.component';
-import { PageNotFoundComponent } from './@core/page-not-found/page-not-found.component';
 import {environment} from "../environments/environment";
 import {AkitaNgDevtools} from "@datorama/akita-ngdevtools";
+import {CoreModule} from "./@core/core.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    HeaderComponent,
-    SideNavigationComponent,
-    PageNotFoundComponent
+
   ],
   imports: [
     BrowserModule,
@@ -28,6 +22,7 @@ import {AkitaNgDevtools} from "@datorama/akita-ngdevtools";
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
+    CoreModule,
     AuthModule,
     MaterialModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
